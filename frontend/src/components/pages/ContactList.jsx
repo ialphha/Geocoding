@@ -46,7 +46,7 @@ function ContactList({ contacts }) {
 							</thead>
 							<tbody>
 								{contacts.map((contact) => (
-									<tr>
+									<tr key={contact._id}>
 										<ContactItem key={contact._id} contact={contact} />
 									</tr>
 								))}

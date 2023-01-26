@@ -16,7 +16,6 @@ export const createContact = createAsyncThunk(
 	"contacts/create",
 	async (contact, thunkAPI) => {
 		try {
-			console.log("create contact called");
 			const token = thunkAPI.getState().auth.user.token;
 			return await contactService.createContact(contact, token);
 		} catch (error) {
@@ -121,7 +120,6 @@ export const contactSlice = createSlice({
 				state.isLoading = false;
 				state.isSuccess = true;
 				state.contacts.push(action.payload);
-				console.log(action.payload);
 			})
 			.addCase(createContact.rejected, (state, action) => {
 				state.isError = true;

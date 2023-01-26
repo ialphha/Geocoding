@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -11,7 +12,7 @@ function Dashboard() {
 	const dispatch = useDispatch();
 
 	const { user } = useSelector((state) => state.auth);
-	const { contacts, isError, isLoading, message } = useSelector(
+	const { contacts, isError, isSuccess, isLoading, message } = useSelector(
 		(state) => state.contacts
 	);
 
@@ -38,7 +39,7 @@ function Dashboard() {
 			<div>Dashboard</div>
 			{/* have to pass the contact info after getting it from backend */}
 			<ContactList contacts={contacts} />
-			<Geolocation />
+			<Geolocation contacts={contacts} />
 		</>
 	);
 }

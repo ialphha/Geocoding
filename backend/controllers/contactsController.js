@@ -47,7 +47,13 @@ const createContact = asyncHandler(async (req, res) => {
 		res.status(400);
 		throw new Error("Please add all the required fields");
 	}
-	console.log("create contacts called");
+	const contactExists = await Contacts.findOne({
+		$or: [{ email: email }, { phone: phone }],
+	});
+	if (contactExists) {
+		res.status(400);
+		throw new Error("contacts already exists!");
+	}
 	const contact = await Contacts.create({
 		firstName: firstName,
 		lastName: lastName,
@@ -83,6 +89,15 @@ const editContacts = asyncHandler(async (req, res) => {
 	if (!req.user) {
 		res.status(401);
 		throw new Error("User not found");
+	}
+
+	//check if the contacts already exists or not
+	const contactExists = await Contacts.findOne({
+		$or: [{ email: email }, { phone: phone }],
+	});
+	if (contactExists) {
+		res.status(400);
+		throw new Error("contacts already exists!");
 	}
 	// check if the req.user and user in the db is the same
 	if (contact.user.toString() !== req.user.id) {
