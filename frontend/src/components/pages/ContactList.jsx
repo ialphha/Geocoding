@@ -6,7 +6,7 @@ import Spinner from "./Spinner";
 import { useEffect } from "react";
 import ContactItem from "./ContactItem";
 
-function ContactList({ contacts }) {
+function ContactList({ contacts, goto }) {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const { user, isError, isLoading, message } = useSelector(
@@ -45,8 +45,8 @@ function ContactList({ contacts }) {
 								</tr>
 							</thead>
 							<tbody>
-								{contacts.map((contact) => (
-									<tr key={contact._id}>
+								{contacts.map((contact, i) => (
+									<tr id={i} key={i} onClick={() => goto(i)}>
 										<ContactItem key={contact._id} contact={contact} />
 									</tr>
 								))}

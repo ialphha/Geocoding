@@ -15,7 +15,11 @@ function Dashboard() {
 	const { contacts, isError, isSuccess, isLoading, message } = useSelector(
 		(state) => state.contacts
 	);
+	const [itemNumber, setItemNumber] = useState(0);
 
+	const goto = (i) => {
+		setItemNumber(i);
+	};
 	useEffect(() => {
 		if (isError) {
 			console.log(message);
@@ -29,7 +33,7 @@ function Dashboard() {
 		return () => {
 			dispatch(reset());
 		};
-	}, [user, navigate, dispatch]);
+	}, [user, navigate, dispatch, itemNumber]);
 
 	if (isLoading) {
 		return <Spinner />;
@@ -38,8 +42,8 @@ function Dashboard() {
 		<>
 			<div>Dashboard</div>
 			{/* have to pass the contact info after getting it from backend */}
-			<ContactList contacts={contacts} />
-			<Geolocation contacts={contacts} />
+			<ContactList contacts={contacts} goto={goto} />
+			<Geolocation contacts={contacts} itemNumber={itemNumber} />
 		</>
 	);
 }
