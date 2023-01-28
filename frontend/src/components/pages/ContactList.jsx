@@ -27,13 +27,12 @@ function ContactList({ contacts, goto }) {
 
 	return (
 		<>
-			<section className="contactList">
+			<section className="List">
 				{contacts.length > 0 ? (
 					<div className="contactList">
-						<h3>Your Contacts:</h3>
-						<table>
+						<table className="contactTable">
 							<thead>
-								<tr>
+								<tr className="headerTr">
 									<th>Title</th>
 									<th>Full Name </th>
 									<th> Address </th>
@@ -42,6 +41,7 @@ function ContactList({ contacts, goto }) {
 									<th> Can Mail </th>
 									<th> Can Phone </th>
 									<th> Can Email </th>
+									<th colSpan={2}>Edit/Delete Bar</th>
 								</tr>
 							</thead>
 							<tbody>

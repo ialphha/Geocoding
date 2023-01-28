@@ -22,7 +22,7 @@ function Navigation() {
 					<NavLink className={"nav-link link "} to="/addContact">
 						ADD Contact
 					</NavLink>
-					<NavLink className="btn" onClick={onLogout}>
+					<NavLink className="nav-link link " onClick={onLogout}>
 						Logout
 					</NavLink>
 				</div>

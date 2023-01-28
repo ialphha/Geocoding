@@ -50,7 +50,7 @@ function Geolocation({ contacts, itemNumber }) {
 					<MapContainer
 						center={[lat, lng]}
 						zoom={13}
-						style={{ width: "90vw", height: "45vh" }}
+						style={{ width: "63vw", height: "45vh" }}
 					>
 						<TileLayer
 							attribution="© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>"
@@ -61,7 +61,28 @@ function Geolocation({ contacts, itemNumber }) {
 								key={marker.latitude}
 								position={[marker.latitude, marker.longitude]}
 							>
-								<Popup></Popup>
+								<Popup>
+									<span>
+										{contacts[itemNumber].firstName +
+											" " +
+											contacts[itemNumber].lastName}
+									</span>
+									<br />
+									<span>
+										{contacts[itemNumber].street +
+											", " +
+											contacts[itemNumber].state +
+											", " +
+											contacts[itemNumber].zip}
+									</span>
+									<br />
+									<span>
+										Contact information:
+										{contacts[itemNumber].phone +
+											", " +
+											contacts[itemNumber].email}
+									</span>
+								</Popup>
 							</Marker>
 						))}
 					</MapContainer>

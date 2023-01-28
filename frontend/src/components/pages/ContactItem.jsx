@@ -41,7 +41,6 @@ function ContactItem({ contact }) {
 					<FaEdit />
 				</button>
 			</td>
-			<td></td>
 			<td>
 				<button
 					className="delete"

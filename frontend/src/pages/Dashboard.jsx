@@ -40,10 +40,14 @@ function Dashboard() {
 	}
 	return (
 		<>
-			<div>Dashboard</div>
-			{/* have to pass the contact info after getting it from backend */}
-			<ContactList contacts={contacts} goto={goto} />
-			<Geolocation contacts={contacts} itemNumber={itemNumber} />
+			<div className="heading">
+				<h3>Your Contacts:</h3>
+			</div>
+			<div className="container">
+				{/* have to pass the contact info after getting it from backend */}
+				<ContactList contacts={contacts} goto={goto} />
+				<Geolocation contacts={contacts} itemNumber={itemNumber} />
+			</div>
 		</>
 	);
 }
