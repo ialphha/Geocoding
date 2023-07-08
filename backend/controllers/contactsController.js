@@ -91,14 +91,6 @@ const editContacts = asyncHandler(async (req, res) => {
 		throw new Error("User not found");
 	}
 
-	//check if the contacts already exists or not
-	const contactExists = await Contacts.findOne({
-		$or: [{ email: email }, { phone: phone }],
-	});
-	if (contactExists) {
-		res.status(400);
-		throw new Error("contacts already exists!");
-	}
 	// check if the req.user and user in the db is the same
 	if (contact.user.toString() !== req.user.id) {
 		res.status(401);
